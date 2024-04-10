@@ -15,6 +15,9 @@ export async function generateEmailBody(
     product: EmailProductInfo,
     type: NotificationType
 ) {
+    if(!product || !product.title || !product.url) {
+        throw new Error('Invalid product');
+    }
     const THRESHOLD_PERCENTAGE = 40;
     // Shorten the product title
     const shortenedTitle =
